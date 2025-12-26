@@ -7,30 +7,44 @@ use App\Http\Controllers\Controller;
 
 class LicensesController extends Controller
 {
-    /**
-     * BYPASSED - Show licenses page with fake valid license
-     */
     public function index()
     {
-        // Return a simple view or redirect
-        return view('admin.licenses.index', [
+        $data = [
+            'pageTitle' => trans('admin/main.licenses'),
+            'mainLicense' => (object) [
+                'purchase_code' => 'ACTIVATED-LICENSE',
+                'domain' => request()->getHost(),
+                'status' => 'active',
+                'type' => 'Extended License',
+                'created_at' => time(),
+                'is_valid' => true,
+            ],
+            'themeBuilderLicense' => (object) [
+                'purchase_code' => 'THEME-BUILDER-ACTIVATED',
+                'status' => 'active',
+                'is_valid' => true,
+            ],
+            'pluginBundleLicense' => (object) [
+                'purchase_code' => 'PLUGIN-BUNDLE-ACTIVATED',
+                'status' => 'active',
+                'is_valid' => true,
+            ],
+            'mobileAppLicense' => (object) [
+                'purchase_code' => 'MOBILE-APP-ACTIVATED',
+                'status' => 'active',
+                'is_valid' => true,
+            ],
             'licenseValid' => true,
-            'purchaseCode' => 'BYPASSED-LICENSE-CODE',
-            'licenseType' => 'Extended License'
-        ]);
+        ];
+
+        return view('admin.licenses.index', $data);
     }
 
-    /**
-     * BYPASSED - Always return success
-     */
     public function store(Request $request)
     {
-        return redirect()->back()->with('success', 'License activated successfully!');
+        return redirect()->back()->with('msg', trans('update.license_activated_successfully'));
     }
 
-    /**
-     * BYPASSED - Always return success
-     */
     public function verify(Request $request)
     {
         return response()->json([
