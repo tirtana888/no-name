@@ -18,6 +18,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['web
     // Settings - CRITICAL
     Route::group(['prefix' => 'settings'], function () {
         Route::get('/', 'SettingsController@index')->name('admin.settings');
+        Route::get('/update-app', 'UpdateController@index')->name('admin.settings.update_app');
         Route::get('/{page}', 'SettingsController@page')->name('admin.settings.page');
         Route::post('/{name}/store', 'SettingsController@store')->name('admin.settings.store');
         Route::get('/seo/{page}', 'SettingsController@page');
