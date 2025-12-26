@@ -372,9 +372,22 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['web
 
     // Licenses (BYPASS - always returns valid)
     Route::group(['prefix' => 'licenses'], function () {
-        Route::get('/', 'LicensesController@index');
+        Route::get('/', 'LicensesController@index')->name('admin.licenses.index');
         Route::post('/verify', 'LicensesController@verify');
+        Route::post('/store', 'LicensesController@store')->name('admin.licenses.store');
     });
+
+    // Plugin License
+    Route::get('/plugin-license', 'LicensesController@index')->name('admin.plugin.license');
+    Route::post('/plugin-license/store', 'LicensesController@store')->name('admin.plugin.license.store');
+
+    // Mobile App License  
+    Route::get('/mobile-license', 'LicensesController@index')->name('admin.mobile_app.license');
+    Route::post('/mobile-license/store', 'LicensesController@store')->name('admin.mobile_app.license.store');
+
+    // Theme Builder License
+    Route::get('/theme-license', 'LicensesController@index')->name('admin.theme-builder.license');
+    Route::post('/theme-license/store', 'LicensesController@store')->name('admin.theme-builder.license.store');
 
     // Update Application
     Route::group(['prefix' => 'update'], function () {
