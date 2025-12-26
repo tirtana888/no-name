@@ -375,10 +375,25 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['web
         Route::post('/verify', 'LicensesController@verify');
     });
 
-    // Update Check
+    // Update Application
     Route::group(['prefix' => 'update'], function () {
         Route::get('/', 'UpdateController@index');
-        Route::post('/check', 'UpdateController@check');
+        Route::post('/basic-update', 'UpdateController@basicUpdate');
+        Route::post('/custom-update', 'UpdateController@customUpdate');
+        Route::post('/database-update', 'UpdateController@databaseUpdate');
+    });
+
+    // Mobile App Settings
+    Route::group(['prefix' => 'settings/mobile-app'], function () {
+        Route::get('/', 'MobileAppSettingsController@index');
+        Route::get('/{name}', 'MobileAppSettingsController@index');
+        Route::post('/store', 'MobileAppSettingsController@store');
+    });
+
+    // Mobile App License
+    Route::group(['prefix' => 'mobile-app-license'], function () {
+        Route::get('/', 'MobileAppLicenseController@index');
+        Route::post('/store', 'MobileAppLicenseController@store');
     });
 
     // Catch-all for any other admin routes
