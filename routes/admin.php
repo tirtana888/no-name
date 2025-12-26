@@ -4,10 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Admin Routes (COMPREHENSIVE BYPASS)
+| Admin Routes
 |--------------------------------------------------------------------------
-| This is a comprehensive, unencrypted version of admin routes.
-| License checks have been bypassed.
 */
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['web', 'admin']], function () {

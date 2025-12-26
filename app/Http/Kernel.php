@@ -62,7 +62,6 @@ class Kernel extends HttpKernel
         'admin_locale' => \App\Http\Middleware\AdminLocale::class,
         'check_mobile_app' => \App\Http\Middleware\CheckMobileApp::class,
         'license_check' => \App\Http\Middleware\LicenseCheck::class,
-        // Added missing middleware aliases
         'check_maintenance' => \App\Http\Middleware\CheckMaintenance::class,
         'check_restriction' => \App\Http\Middleware\CheckRestriction::class,
         'web.auth' => \App\Http\Middleware\WebAuthenticate::class,
